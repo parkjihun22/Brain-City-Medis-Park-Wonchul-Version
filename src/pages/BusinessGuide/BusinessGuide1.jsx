@@ -1,0 +1,201 @@
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import styles from "./BusinessGuide.module.scss";
+import Header from "../../components/Header/Header";
+import MenuBar from "../../components/MenuBar/MenuBar";
+import Footer from "../../components/Footer/Footer";
+import Bener from "../../components/Bener/Bener";
+import FixIcon from "../../components/FixIcon/FixIcon";
+import page1 from "../../assets/BusinessGuide/BusinessGuide1/page1.jpg";
+import tableImage from "../../assets/BusinessGuide/BusinessGuide1/tableImage.jpg";
+import { Helmet } from "react-helmet-async";
+
+const projectData = [
+  { label: "사업명", value: "평택 브레인시티 메디스파크" },
+  { label: "사업위치", value: "경기도 평택시 브레인시티 일반산업단지 공동 6BL" },
+  { label: "대지면적", value: "약 64,616㎡" },
+  { label: "연면적", value: "약 223,159㎡" },
+  { label: "건축규모", value: "지하 2층 ~ 지상 35층 / 10개동" },
+  { label: "세대수", value: "전용 59㎡ · 84㎡ · 101㎡ / 총 1,215세대" },
+];
+
+const BusinessGuide1 = () => {
+  const menuContents = [
+    { title: "사업안내", url: "/BusinessGuide/intro" },
+    { title: "분양일정", url: "/BusinessGuide/plan" },
+    // { title: "계약안내문", url: "/BusinessGuide/documents" },
+  ];
+  const [isScroll, setIsScroll] = useState(false);
+  const { pathname } = useLocation(); // 현재 경로를 가져옴
+  const isMobile = useMediaQuery({ query: "(max-width: 900px)" }); // 모바일 여부 확인
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 페이지가 로드될 때 스크롤을 최상단으로 이동
+  }, [pathname]); // pathname이 변경될 때마다 실행
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="robots" content="index, follow" />
+
+        <title>평택 브레인시티 메디스파크 - 사업안내</title>
+
+        <meta
+          name="description"
+          content="평택 브레인시티 메디스파크의 사업개요를 소개합니다. 브레인시티 공동주택용지에 들어서는 대단지 아파트로, 단지 규모와 구성, 설계계획 및 미래가치를 한눈에 확인할 수 있습니다."
+        />
+
+        <meta
+          name="keywords"
+          content="평택 브레인시티 메디스파크, 브레인시티 메디스파크, 평택 브레인시티 메디스파크 사업안내, 평택 브레인시티 메디스파크 모델하우스"
+        />
+
+        <link rel="canonical" href="https://www.locamobility.co.kr/BusinessGuide/intro" />
+
+        <meta property="og:title" content="평택 브레인시티 메디스파크 - 사업안내" />
+        <meta
+          property="og:description"
+          content="평택 브레인시티 메디스파크의 사업개요를 소개합니다. 단지 규모와 구성, 설계계획 및 미래가치를 확인해보세요."
+        />
+        <meta
+          property="og:image"
+          content="https://www.locamobility.co.kr/Main1.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.locamobility.co.kr/BusinessGuide/intro"
+        />
+        <meta property="og:site_name" content="평택 브레인시티 메디스파크" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="평택 브레인시티 메디스파크 - 사업안내"
+        />
+        <meta
+          name="twitter:description"
+          content="평택 브레인시티 메디스파크의 사업개요를 소개합니다. 단지 규모와 구성, 설계계획 및 미래가치를 확인해보세요."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.locamobility.co.kr/Main1.png"
+        />
+        <meta
+          name="twitter:url"
+          content="https://www.locamobility.co.kr/BusinessGuide/intro"
+        />
+
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "평택 브레인시티 메디스파크 - 사업안내",
+              "description": "평택 브레인시티 메디스파크의 사업개요를 소개합니다. 단지 규모와 구성, 설계계획 및 미래가치를 한눈에 확인할 수 있습니다.",
+              "url": "https://www.locamobility.co.kr/BusinessGuide/intro"
+            }
+          `}
+        </script>
+      </Helmet>
+
+      <Header isChanged={isScroll} />
+      <FixIcon />
+
+      <Bener title="사업개요" />
+
+      <MenuBar contents={menuContents} />
+
+      <h1 className={styles.screenReaderOnly}>
+        평택 브레인시티 메디스파크 - 사업안내
+      </h1>
+
+      <p className={styles.screenReaderOnly}>
+        평택 브레인시티 메디스파크는 브레인시티의 미래가치를 품은 프리미엄 주거단지입니다.
+        이 페이지에서는 사업명, 위치, 규모, 세대구성 등 사업개요 전반을 확인할 수 있으며,
+        새로운 주거 프리미엄의 비전과 가치를 함께 살펴보실 수 있습니다.
+      </p>
+
+      <div className={styles.textBox}>
+        <div>브레인시티의 비전 위에 완성될</div>
+        <div>평택 브레인시티 메디스파크</div>
+      </div>
+
+      <img
+        className={styles.img3}
+        src={page1}
+        alt="평택 브레인시티 메디스파크 사업개요 조감도 이미지"
+      />
+
+      <div className={styles.tableContainer}>
+        {!isMobile && <img className={styles.tableImg} src={tableImage} />}
+        <table className={styles.projectTable}>
+          <tbody>
+            {projectData.map((item, index) => (
+              <tr key={index}>
+                <td className={styles.label}>{item.label}</td>
+                <td className={styles.contents}>{item.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className={styles.commonBox}>
+        <div className={styles.notice}>
+          ※ 상기 이미지에 표현된 외관 디자인은 개략적인 이해를 돕기 위한 것으로,
+          상품특화 및 인허가 협의에 따라 입면 디자인, 경관조명, 출입구, 색채,
+          몰딩, 창호, 난간, 옥상 장식물, 줄눈, 각종 시설물의 디자인 및 형태,
+          마감사양, 조명 설치 위치 등이 실시공시 변경될 수 있습니다.
+        </div>
+        <div className={styles.notice}>
+          ※ 본 단지의 명칭, 동호수 표기, 외부 색채, 외관 디자인, 옥탑 디자인,
+          외부 조명시설, 태양광 발전 설비시설 등은 현장 여건 및 인허가 관청과의
+          심의, 협의 과정에서 향후 변경될 수 있습니다.
+        </div>
+        <div className={styles.notice}>
+          ※ 단지 공용 태양광 패널이 주동 옥상에 설치될 예정이며, 시설을
+          훼손하거나 제거할 수 없습니다. 또한, 본 공사 시 시공 여건에 따라 위치
+          및 규모(크기, 높이, 개소)가 변경될 수 있습니다.
+        </div>
+        <div className={styles.notice}>
+          ※ 문주, 경비실, 외부 엘리베이터실, 계단실 등 외부 시설물의 형태,
+          디자인, 마감재 등은 기능 및 외관 개선을 위해 변경될 수 있습니다.
+        </div>
+        <div className={styles.notice}>
+          ※ 옥상 구조물은 본 공사 시 형태 변경 또는 구조물 지지를 위한 기둥이
+          추가 시공될 수 있습니다.
+        </div>
+        <div className={styles.notice}>
+          ※ 본 공사 시 옥상구조물 상부는 도장 시공을 하지 않습니다.
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default BusinessGuide1;
