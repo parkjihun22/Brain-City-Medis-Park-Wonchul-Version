@@ -76,7 +76,7 @@ const section3Contents = [
     imgSrc: section3_Image4,
     title: "PREMIUM 04",
     text1: `합리적인 분양가 상한제`,
-    text2: `입주자의 경제적 부담을 낮춘<br />
+    text2: `입주까지 1500만원으로<br />
             내 집 마련의 기회`,
     link: "/LocationEnvironment/primium",
     linkText: "더 알아보기 >",
@@ -202,7 +202,7 @@ const Main = () => {
                 <div className={styles.mainImageTextSub}>
                   분양가 상한제 적용 <span className={styles.greyText}>착한 분양가</span> | 
                   부담을 덜어주는 <span className={styles.greyText}>착한 옵션</span> | 
-                  계약금 5%로 내 집 마련 기회 <span className={styles.greyText}>착한 조건</span>
+                  1500만원으로 입주까지 <span className={styles.greyText}>착한 조건</span>
                 </div>
 
                 <div className={styles.mainImageTitleBox}>
@@ -474,7 +474,7 @@ const Main = () => {
               부담을 덜어주는<br />
               <span className={styles.greyText}>착한 옵션</span><br />
 
-              계약금 5%로 내 집 마련 기회<br />
+              1500만원으로 입주까지<br />
               <span className={styles.greyText}>착한 조건</span>
             </div>
 
